@@ -1,0 +1,28 @@
+from .public_web import collect_public_web
+
+
+def collect_red_link(source: dict):
+    """RED / Xiaohongshu restricted-source MVP connector.
+
+    This connector does NOT bypass login walls, anti-bot protections, signatures, or platform restrictions.
+    It supports a feasibility test only:
+    1) Try to read an accessible RED link.
+    2) If blocked, return a controlled restricted-source status.
+    3) Optional future extension: approved cookie/session or Playwright browser automation.
+    """
+    try:
+        rows = collect_public_web(source, timeout=15)
+        for r in rows:
+            if not r.get("raw_text") or len(r.get("raw_text", "")) < 80:
+                r["access_status"] = "Restricted"
+        return rows
+    except Exception as e:
+        return [{
+            "title": source.get("Source Name", "RED Restricted Source"),
+            "published_date": "",
+            "url": source.get("URL / Query") or source.get("URL"),
+            "raw_text": "",
+            "image_url": "",
+            "access_status": "Restricted",
+            "error": f"RED restricted-source connector could not access content: {str(e)}"
+        }]

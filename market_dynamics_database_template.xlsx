@@ -1,0 +1,15 @@
+{
+  "anthropic_api_key": "YOUR_ANTHROPIC_API_KEY",
+  "wecom_webhook_url": "YOUR_WECOM_GROUP_BOT_WEBHOOK_URL",
+  "database_path": "data/market_dynamics_database.xlsx",
+  "template_path": "data/market_dynamics_database_template.xlsx",
+  "source_register_sheet": "Source_Register",
+  "raw_collection_sheet": "Raw_Collection",
+  "dynamics_output_sheet": "Dynamics_Output",
+  "message_output_sheet": "Message_Output",
+  "output_log_sheet": "Output_Log",
+  "wecom_group_name": "Market Dynamics Test Group",
+  "mvp_week_code": "MayY26-W3-",
+  "red_cookie_file": "config/red_cookies.json",
+  "send_requires_approval": true
+}

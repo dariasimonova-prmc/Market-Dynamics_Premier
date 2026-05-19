@@ -1,0 +1,6 @@
+from .public_web import collect_public_web
+
+
+def collect_wechat_article(source: dict):
+    """Link-based WeChat OA article ingestion. Only works for accessible public article links."""
+    return collect_public_web(source)
